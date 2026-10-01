@@ -95,8 +95,9 @@ body.ed .bt{display:flex}
 .lk label{display:flex;justify-content:space-between;align-items:center;padding:calc(var(--u)*24) 0;font-size:calc(var(--u)*44*var(--ft))}
 .lk input[type=range]{width:55%}
 :root{--ft:1;--rd:1}
+.chat{box-sizing:content-box;padding:calc(var(--u)*24);margin:calc(var(--u)*-24)}
 </style></head><body>
-<main id="main"></main><button class="fab" data-act="edit" aria-label="Изменить">✎</button><nav id="nav"></nav>
+<main id="main"></main><nav id="nav"></nav>
 <script>
 const DEF={"bonus": 1250, "look": {"accent":"#2ba85c","font":100,"round":100}, "pay": {"m":"октябрь","y":"2026","title":"Погасить платёж","sub":"По займам за октябрь"}, "cardsTitle":"Карты и счета","newCardText":"Открыть новую карту", "currency": "₸", "initials": "ИФ", "updated": "01.10.2026", "tabs": ["Главная", "Мой банк", "Переводы", "Платежи"], "centerTitle": "Центр", "centerText": "Здесь можно разместить любой текст или картинку", "numbersTab": 1, "items": [["Основной счёт", 77724.19, "• 9421"], ["Накопления", 150000, "• 2242"], ["Депозит", 82500, "KZ00 0000 0000 0000"], ["Резерв", 24000, "• 3621"]], "banners": [{"title": "Заголовок баннера", "text": "короткая подпись", "color": "#1f7a52"}, {"title": "Второй баннер", "text": "ещё подпись", "color": "#1b8fd1"}], "services": ["Карты", "Вклады", "Займы", "Инвест", "Магазин", "Поездки", "Защита", "Услуги"], "stripTitle": "Все сервисы", "strip": [{"title": "Еда"}, {"title": "Рост"}, {"title": "Кино"}, {"title": "Здоровье"}, {"title": "Продукты"}], "segments": [{"name": "Еда", "cards": [{"title": "Бургер с двойной котлетой"}, {"title": "Кофе на растительном молоке"}, {"title": "Ужин с самовывозом"}, {"title": "Праздничный плов"}]}, {"name": "Поездки", "cards": [{"title": "Выходные у моря"}, {"title": "Горный маршрут"}]}, {"name": "Магазин", "cards": [{"title": "Новинки недели"}, {"title": "Скидки дня"}]}], "moreButton": "Показать больше", "lists": {"2": [["Между своими счетами", "Картами и счетами"], ["По номеру счёта", "Физ. и юр. лицам"], ["Международные", "В любую точку мира"], ["Запросить перевод", "По номеру телефона"]], "3": [["Мобильная связь", "Пополнить номер"], ["Коммунальные услуги", "Свет, вода, газ"], ["Интернет и ТВ", "Оплата по договору"], ["Штрафы", "Проверить и оплатить"]]}};
 let S,I,edit=false,cur=0,curSeg=0;
@@ -183,7 +184,9 @@ function importData(){
    S=Object.assign({},DEF,d.s);I=d.i||{};save();render()}catch(e){alert('Это не файл резервной копии')}};r.readAsText(f)};
  inp.click();
 }
+let taps=[];
 document.addEventListener('click',e=>{
+ if(e.target.closest('.chat')){const n=Date.now();taps=taps.filter(t=>n-t<5000);taps.push(n);if(taps.length>=4){taps=[];edit=!edit;render()}return}
  const t=e.target.closest('[data-tab]');if(t){show(t.dataset.tab==='qr'?'qr':+t.dataset.tab);return}
  const a=e.target.closest('[data-act]');
  if(a){const k=a.dataset.act;
