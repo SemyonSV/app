@@ -96,10 +96,43 @@ body.ed .bt{display:flex}
 .lk input[type=range]{width:55%}
 :root{--ft:1;--rd:1}
 .chat{box-sizing:content-box;padding:calc(var(--u)*24);margin:calc(var(--u)*-24)}
+
+.trh{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:calc(var(--u)*30) calc(var(--u)*54) calc(var(--u)*24)}
+.trh h2{margin:0;font-size:calc(var(--u)*58*var(--ft));font-weight:700}
+.hist{display:flex;align-items:center;gap:calc(var(--u)*14);color:var(--g);font-size:calc(var(--u)*50*var(--ft))}
+.hist svg{width:calc(var(--u)*60);height:calc(var(--u)*60);fill:none;stroke:var(--g);stroke-width:1.8;stroke-linecap:round}
+.bdg{justify-self:end;position:relative;display:flex}
+.bdg b{position:absolute;top:calc(var(--u)*-34);right:calc(var(--u)*-40);min-width:calc(var(--u)*56);height:calc(var(--u)*56);padding:0 6px;border-radius:calc(var(--u)*28);background:#e8302a;color:#fff;font-size:calc(var(--u)*36*var(--ft));font-weight:600;display:flex;align-items:center;justify-content:center}
+.sbar{margin:0 calc(var(--u)*54);height:calc(var(--u)*96);border-radius:calc(var(--u)*30*var(--rd));background:#e7e8ea;display:flex;align-items:center;gap:calc(var(--u)*20);padding:0 calc(var(--u)*24);color:#8a8e99;font-size:calc(var(--u)*56*var(--ft))}
+.sbar svg{width:calc(var(--u)*64);height:calc(var(--u)*64);fill:none;stroke:#8a8e99;stroke-width:1.8;stroke-linecap:round}
+.seg2{display:flex;background:#efefef;border-radius:999px;padding:calc(var(--u)*6);border:1px solid var(--line)}
+.seg2 button{flex:1;border:0;background:none;font:inherit;font-size:calc(var(--u)*50*var(--ft));padding:calc(var(--u)*26) 0;border-radius:999px;color:var(--text)}
+.seg2 button.on{background:var(--g);color:#fff}
+.phf{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:calc(var(--u)*34);border:1px solid var(--line);border-radius:999px;padding:calc(var(--u)*20) calc(var(--u)*40);box-shadow:0 2px 10px #0000000d}
+.phf small{display:block;color:var(--muted);font-size:calc(var(--u)*46*var(--ft))}
+.phf input{border:0;outline:0;background:none;font:inherit;font-size:calc(var(--u)*56*var(--ft));width:100%;padding:0;color:var(--text)}
+.phf svg{flex:0 0 auto;width:calc(var(--u)*100);height:calc(var(--u)*100);fill:var(--g);stroke:none}
+.h3{font-size:calc(var(--u)*54*var(--ft));font-weight:500}
+.cts{display:flex;gap:calc(var(--u)*40);overflow-x:auto;padding-top:calc(var(--u)*20)}
+.ct{flex:0 0 auto;text-align:center;max-width:calc(var(--u)*300)}
+.cc{width:calc(var(--u)*130);height:calc(var(--u)*130);margin:0 auto calc(var(--u)*14);border-radius:50%;background:#f1f1f3;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*50*var(--ft))}
+.cn{font-size:calc(var(--u)*50*var(--ft))}.cp{font-size:calc(var(--u)*42*var(--ft));color:var(--muted)}
+
+.phd{display:flex;justify-content:space-between;align-items:center;padding:calc(var(--u)*30) calc(var(--u)*54) 0}
+.pg{display:grid;grid-template-columns:repeat(4,1fr);gap:calc(var(--u)*40) 0;padding-top:calc(var(--u)*30)}
+.pi{text-align:center;position:relative;font-size:calc(var(--u)*34*var(--ft));padding:0 calc(var(--u)*6);overflow-wrap:anywhere}
+.pi i{display:flex;align-items:center;justify-content:center;width:calc(var(--u)*118);height:calc(var(--u)*118);margin:0 auto calc(var(--u)*14);border-radius:calc(var(--u)*34*var(--rd));border:1px solid var(--line);background:#fff center/cover}
+.pi i svg{width:56%;height:56%;fill:none;stroke:var(--g);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.pi i.all{background:var(--gs);border-color:transparent}
+.alt{color:var(--g);font-weight:600}
+.nw,.nw2{background:#e8302a;color:#fff;font-size:calc(var(--u)*28*var(--ft));font-weight:700;padding:1px 8px;border-radius:999px}
+.nw{position:absolute;top:calc(var(--u)*-14);right:calc(var(--u)*14)}
+.am{color:var(--g);font-size:calc(var(--u)*58*var(--ft))}
+.dots{align-self:center;flex:0 0 calc(var(--u)*100);height:calc(var(--u)*100);border-radius:50%;background:var(--gs);color:var(--g);display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*34)}
 </style></head><body>
 <main id="main"></main><nav id="nav"></nav>
 <script>
-const DEF={"bonus": 1250, "look": {"accent":"#2ba85c","font":100,"round":100}, "pay": {"m":"октябрь","y":"2026","title":"Погасить платёж","sub":"По займам за октябрь"}, "cardsTitle":"Карты и счета","newCardText":"Открыть новую карту", "currency": "₸", "initials": "ИФ", "updated": "01.10.2026", "tabs": ["Главная", "Мой банк", "Переводы", "Платежи"], "centerTitle": "Центр", "centerText": "Здесь можно разместить любой текст или картинку", "numbersTab": 1, "items": [["Основной счёт", 77724.19, "• 9421"], ["Накопления", 150000, "• 2242"], ["Депозит", 82500, "KZ00 0000 0000 0000"], ["Резерв", 24000, "• 3621"]], "banners": [{"title": "Заголовок баннера", "text": "короткая подпись", "color": "#1f7a52"}, {"title": "Второй баннер", "text": "ещё подпись", "color": "#1b8fd1"}], "services": ["Карты", "Вклады", "Займы", "Инвест", "Магазин", "Поездки", "Защита", "Услуги"], "stripTitle": "Все сервисы", "strip": [{"title": "Еда"}, {"title": "Рост"}, {"title": "Кино"}, {"title": "Здоровье"}, {"title": "Продукты"}], "segments": [{"name": "Еда", "cards": [{"title": "Бургер с двойной котлетой"}, {"title": "Кофе на растительном молоке"}, {"title": "Ужин с самовывозом"}, {"title": "Праздничный плов"}]}, {"name": "Поездки", "cards": [{"title": "Выходные у моря"}, {"title": "Горный маршрут"}]}, {"name": "Магазин", "cards": [{"title": "Новинки недели"}, {"title": "Скидки дня"}]}], "moreButton": "Показать больше", "lists": {"2": [["Между своими счетами", "Картами и счетами"], ["По номеру счёта", "Физ. и юр. лицам"], ["Международные", "В любую точку мира"], ["Запросить перевод", "По номеру телефона"]], "3": [["Мобильная связь", "Пополнить номер"], ["Коммунальные услуги", "Свет, вода, газ"], ["Интернет и ТВ", "Оплата по договору"], ["Штрафы", "Проверить и оплатить"]]}};
+const DEF={"pm": {"history": "История", "badge": "24", "search": "Что хотите оплатить?", "popTitle": "Популярные", "city": "г. Алматы", "tiles": [{"t": "Мобильная связь", "b": ""}, {"t": "Парковка", "b": ""}, {"t": "Транспорт", "b": ""}, {"t": "Интернет и ТВ", "b": ""}, {"t": "Парковки рядом", "b": ""}, {"t": "Оплата по лицу", "b": "NEW"}, {"t": "Заправка", "b": ""}, {"t": "Штрафы", "b": ""}, {"t": "ЖКУ", "b": ""}, {"t": "Свет", "b": ""}], "allText": "Все платежи", "dueTitle": "К оплате", "due": [{"name": "Имя Фамилия", "sub": "7770000000", "amount": 10490, "badge": "NEW"}, {"name": "Коммунальные услуги", "sub": "г. Алматы, ул. Примерная, д. 1", "amount": 14178.59, "badge": "NEW"}]}, "tr": {"history": "История", "seg": ["По номеру", "На карту РК"], "label": "Номер телефона получателя", "phone": "+7", "saved": "Сохранённые", "change": "Изменить", "badge": "24", "search": "Поиск", "contacts": [{"ini": "ЕК", "name": "ЕРБОЛ К.", "phone": "+7***5-40"}]}, "bonus": 1250, "look": {"accent":"#2ba85c","font":100,"round":100}, "pay": {"m":"октябрь","y":"2026","title":"Погасить платёж","sub":"По займам за октябрь"}, "cardsTitle":"Карты и счета","newCardText":"Открыть новую карту", "currency": "₸", "initials": "ИФ", "updated": "01.10.2026", "tabs": ["Главная", "Мой банк", "Переводы", "Платежи"], "centerTitle": "Центр", "centerText": "Здесь можно разместить любой текст или картинку", "numbersTab": 1, "items": [["Основной счёт", 77724.19, "• 9421"], ["Накопления", 150000, "• 2242"], ["Депозит", 82500, "KZ00 0000 0000 0000"], ["Резерв", 24000, "• 3621"]], "banners": [{"title": "Заголовок баннера", "text": "короткая подпись", "color": "#1f7a52"}, {"title": "Второй баннер", "text": "ещё подпись", "color": "#1b8fd1"}], "services": ["Карты", "Вклады", "Займы", "Инвест", "Магазин", "Поездки", "Защита", "Услуги"], "stripTitle": "Все сервисы", "strip": [{"title": "Еда"}, {"title": "Рост"}, {"title": "Кино"}, {"title": "Здоровье"}, {"title": "Продукты"}], "segments": [{"name": "Еда", "cards": [{"title": "Бургер с двойной котлетой"}, {"title": "Кофе на растительном молоке"}, {"title": "Ужин с самовывозом"}, {"title": "Праздничный плов"}]}, {"name": "Поездки", "cards": [{"title": "Выходные у моря"}, {"title": "Горный маршрут"}]}, {"name": "Магазин", "cards": [{"title": "Новинки недели"}, {"title": "Скидки дня"}]}], "moreButton": "Показать больше", "lists": {"2": [["Между своими счетами", "Картами и счетами"], ["По номеру счёта", "Физ. и юр. лицам"], ["Международные", "В любую точку мира"], ["Запросить перевод", "По номеру телефона"]], "3": [["Мобильная связь", "Пополнить номер"], ["Коммунальные услуги", "Свет, вода, газ"], ["Интернет и ТВ", "Оплата по договору"], ["Штрафы", "Проверить и оплатить"]]}};
 let S,I,edit=false,cur=0,curSeg=0;
 try{S=JSON.parse(localStorage.getItem('s'))}catch(e){}
 S=Object.assign({},DEF,S||{});
@@ -142,7 +175,29 @@ function home(){
  '<div class="cg">'+(S.segments[curSeg]||{cards:[]}).cards.map((c,k)=>{const p='segments.'+curSeg+'.cards.'+k;return '<div class="c"><i data-i="'+p+'" '+bgi(p)+'></i>'+P(p+'.title')+'</div>'}).join('')+'</div>'+
  '<button class="more" data-p="moreButton">'+esc(S.moreButton)+'</button>';
 }
-function listPage(i){return '<h1>'+P('tabs.'+i)+'</h1><div class="card" style="margin-top:calc(var(--u)*24)">'+((S.lists||{})[i]||[]).map((x,k)=>'<div class="row"><span>'+P('lists.'+i+'.'+k+'.0')+'<small data-p="lists.'+i+'.'+k+'.1">'+esc(x[1])+'</small></span></div>').join('')+'</div>'}
+function listPage(i,nt){return (nt?'':'<h1>'+P('tabs.'+i)+'</h1>')+'<div class="card" style="margin-top:calc(var(--u)*24)">'+((S.lists||{})[i]||[]).map((x,k)=>'<div class="row"><span>'+P('lists.'+i+'.'+k+'.0')+'<small data-p="lists.'+i+'.'+k+'.1">'+esc(x[1])+'</small></span></div>').join('')+'</div>'}
+function transferPage(i){
+ const T=S.tr;
+ const cons=T.contacts.map((c,k)=>'<div class="ct"><div class="cc" data-p="tr.contacts.'+k+'.ini">'+esc(c.ini)+'</div><div class="cn" data-p="tr.contacts.'+k+'.name">'+esc(c.name)+'</div><div class="cp" data-p="tr.contacts.'+k+'.phone">'+esc(c.phone)+'</div><span class="x" data-act="delc" data-k="'+k+'" style="float:none">✕</span></div>').join('');
+ return '<div class="trh"><span class="hist"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-p="tr.history">'+esc(T.history)+'</span></span>'+P('tabs.'+i,'h2')+'<span class="bdg"><svg class="chat" viewBox="0 0 24 24"><path d="M4 20l1.5-4A8 8 0 1 1 8 18.5z"/></svg><b data-p="tr.badge">'+esc(T.badge)+'</b></span></div>'+
+ '<div class="sbar"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span data-p="tr.search">'+esc(T.search)+'</span></div>'+
+ '<div class="card" style="margin-top:calc(var(--u)*34)"><div class="seg2">'+T.seg.map((x,k)=>'<button data-trseg="'+k+'" class="'+(k===trSeg?'on':'')+'">'+esc(x)+'</button>').join('')+'</div>'+
+ '<div class="phf"><div style="flex:1;min-width:0"><small data-p="tr.label">'+esc(T.label)+'</small><input type="tel" inputmode="tel" value="'+esc(T.phone)+'"></div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11"/><circle cx="12" cy="9.5" r="3.5" fill="#fff"/><path d="M5.8 18.5c1.2-2.8 3.5-4.3 6.2-4.3s5 1.5 6.2 4.3" fill="#fff"/></svg></div>'+
+ '<div class="chead" style="margin-top:calc(var(--u)*40)"><span class="h3" data-p="tr.saved">'+esc(T.saved)+'</span><span class="hide" data-p="tr.change">'+esc(T.change)+'</span></div>'+
+ '<div class="cts">'+cons+'</div><button class="btn" data-act="addc">+ Добавить контакт</button></div>'+
+ listPage(i,true);
+}
+const PI=["<rect x=\"7\" y=\"3\" width=\"10\" height=\"18\" rx=\"2\"/><path d=\"M11 18h2\"/>", "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M10 17V7h3a3 3 0 0 1 0 6h-3\"/>", "<rect x=\"4\" y=\"4\" width=\"16\" height=\"13\" rx=\"3\"/><path d=\"M4 11h16M8 20l1-3M16 20l-1-3\"/>", "<path d=\"M3 9a14 14 0 0 1 18 0M6 12.5a9.500 9.500 0 0 1 12 0M9 16a5 5 0 0 1 6 0\"/><circle cx=\"12\" cy=\"19\" r=\"0.8\"/>", "<path d=\"M12 21s-6-5.500-6-10a6 6 0 0 1 12 0c0 4.500-6 10-6 10z\"/><circle cx=\"12\" cy=\"11\" r=\"2\"/>", "<path d=\"M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2\"/><circle cx=\"12\" cy=\"10\" r=\"2.500\"/><path d=\"M7.500 17c1-2.500 2.500-3.500 4.500-3.500s3.500 1 4.500 3.500\"/>", "<path d=\"M5 20V5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v15M5 20h9M5 10h9M14 8l3 2v7a1.500 1.500 0 0 0 3 0V9l-3-3\"/>", "<path d=\"M12 3l8 3v6c0 5-4 8-8 9-4-1-8-4-8-9V6z\"/><path d=\"M12 8v5M12 16v.5\"/>", "<path d=\"M4 20V10l8-6 8 6v10zM9 20v-6h6v6\"/>", "<path d=\"M13 3L5 13h6l-1 8 8-10h-6z\"/>"];
+function shiftImgs(pre,d){const N={},re=new RegExp('^'+pre.replace(/\./g,'\\.')+'\\.(\\d+)$');Object.keys(I).forEach(k=>{const m=k.match(re);if(!m)N[k]=I[k];else{const j=+m[1];if(j<d)N[k]=I[k];else if(j>d)N[pre+'.'+(j-1)]=I[k]}});I=N}
+function paymentsPage(i){
+ const M=S.pm;
+ const tl=M.tiles.map((x,k)=>{const p='pm.tiles.'+k;return '<div class="pi"><i data-i="'+p+'" '+bgi(p)+'>'+(I[p]?'':Sv(PI[k%10]))+'</i>'+(x.b||edit?'<span class="nw" data-p="'+p+'.b">'+esc(x.b||'+')+'</span>':'')+'<div data-p="'+p+'.t">'+esc(x.t)+'</div><span class="x" data-act="delt" data-k="'+k+'" style="position:absolute;top:0;right:0;float:none">✕</span></div>'}).join('');
+ const due=M.due.map((x,k)=>{const p='pm.due.'+k;return '<div class="arow"><div class="tile" data-i="'+p+'" '+bgi(p)+'>'+(I[p]?'':Sv(PI[k%10]))+'</div><div class="atxt"><div class="ahead" style="font-size:calc(var(--u)*58*var(--ft))"><span data-p="'+p+'.name">'+esc(x.name)+'</span><span class="x" data-act="deld" data-k="'+k+'">✕</span></div><div class="asub" data-p="'+p+'.sub">'+esc(x.sub||(edit?'добавить подпись':''))+'</div><div class="am"><span data-p="'+p+'.amount" data-n="1">'+fmt(x.amount)+'</span>'+(x.badge||edit?' <span class="nw2" data-p="'+p+'.badge">'+esc(x.badge||'+')+'</span>':'')+'</div></div><span class="dots">•••</span></div>'}).join('');
+ return '<div class="phd"><span class="hist"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span data-p="pm.history">'+esc(M.history)+'</span></span><span class="bdg"><svg class="chat" viewBox="0 0 24 24"><path d="M4 20l1.5-4A8 8 0 1 1 8 18.5z"/></svg><b data-p="pm.badge">'+esc(M.badge)+'</b></span></div>'+P('tabs.'+i,'h1')+
+ '<div class="sbar"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21"/></svg><span data-p="pm.search">'+esc(M.search)+'</span></div>'+
+ '<div class="card" style="margin-top:calc(var(--u)*40)"><div class="chead"><span class="h3" data-p="pm.popTitle">'+esc(M.popTitle)+'</span><span class="hide" data-p="pm.city">'+esc(M.city)+'</span></div><div class="pg">'+tl+'<div class="pi"><i class="all"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></i><div class="alt" data-p="pm.allText">'+esc(M.allText)+'</div></div></div><button class="btn" data-act="addt">+ Добавить плитку</button></div>'+
+ '<div class="card" style="margin-top:calc(var(--u)*24)"><div class="chead"><span class="h3" data-p="pm.dueTitle">'+esc(M.dueTitle)+'</span></div>'+due+'<button class="btn" data-act="addd">+ Добавить строку</button></div>';
+}
 function center(){return '<h1>'+P('centerTitle')+'</h1><p class="sub">'+P('centerText')+'</p><div class="ph '+(I.centerImg?'on':'')+'" data-i="centerImg" '+bgi('centerImg')+'></div>'}
 function apply(){const L=S.look||DEF.look,r=document.documentElement.style;
  const h=/^#[0-9a-f]{6}$/i.test(L.accent)?L.accent:'#2ba85c',n=parseInt(h.slice(1),16),m=c=>Math.round(c+(255-c)*.86);
@@ -151,7 +206,7 @@ document.addEventListener('input',e=>{const k=e.target.dataset&&e.target.dataset
 function render(){
  apply();
  const st=main.scrollTop;
- main.innerHTML=[0,1,2,3].map(i=>'<section class="page'+(i===0&&i!==S.numbersTab?' home':'')+'" data-t="'+i+'">'+(i===S.numbersTab?numbers(i):i===0?home():listPage(i))+'</section>').join('')+'<section class="page" data-t="qr">'+center()+'</section>';
+ main.innerHTML=[0,1,2,3].map(i=>'<section class="page'+(i===0&&i!==S.numbersTab?' home':'')+'" data-t="'+i+'">'+(i===S.numbersTab?numbers(i):i===0?home():i===2?transferPage(i):i===3?paymentsPage(i):listPage(i))+'</section>').join('')+'<section class="page" data-t="qr">'+center()+'</section>';
  nav.innerHTML=[0,1,'qr',2,3].map(k=>k==='qr'?'<button class="qr" data-tab="qr"><span>'+Sv(QRI)+'</span></button>':'<button data-tab="'+k+'">'+Sv(NAV[k]).replace('<svg',k===0?'<svg class="f"':'<svg')+esc(S.tabs[k])+'</button>').join('');
  document.body.classList.toggle('ed',edit);
  show(cur,true);main.scrollTop=st;
@@ -184,7 +239,7 @@ function importData(){
    S=Object.assign({},DEF,d.s);I=d.i||{};save();render()}catch(e){alert('Это не файл резервной копии')}};r.readAsText(f)};
  inp.click();
 }
-let taps=[];
+let taps=[],trSeg=0;
 document.addEventListener('click',e=>{
  if(e.target.closest('.chat')){const n=Date.now();taps=taps.filter(t=>n-t<5000);taps.push(n);if(taps.length>=4){taps=[];edit=!edit;render()}return}
  const t=e.target.closest('[data-tab]');if(t){show(t.dataset.tab==='qr'?'qr':+t.dataset.tab);return}
@@ -196,10 +251,18 @@ document.addEventListener('click',e=>{
   else if(k==='export'){exportData()}
   else if(k==='import'){importData()}
   else if(k==='add'){S.items.push(['Новая карта',0,'• 0000']);save();render()}
+  else if(k==='addc'){S.tr.contacts.push({ini:'ИФ',name:'ИМЯ Ф.',phone:'+7***0-00'});save();render()}
+  else if(k==='delc'){S.tr.contacts.splice(+a.dataset.k,1);save();render()}
+  else if(k==='addt'){S.pm.tiles.push({t:'Новая плитка',b:''});save();render()}
+  else if(k==='delt'){const d=+a.dataset.k;S.pm.tiles.splice(d,1);shiftImgs('pm.tiles',d);save();render()}
+  else if(k==='addd'){S.pm.due.push({name:'Название',sub:'',amount:0,badge:''});save();render()}
+  else if(k==='deld'){const d=+a.dataset.k;S.pm.due.splice(d,1);shiftImgs('pm.due',d);save();render()}
   else if(k==='toggle'){S.hideCards=!S.hideCards;save();render()}
   else if(k==='del'){const d=+a.dataset.k;S.items.splice(d,1);const N={};Object.keys(I).forEach(key=>{const m=key.match(/^items\.(\d+)$/);if(!m)N[key]=I[key];else{const j=+m[1];if(j<d)N[key]=I[key];else if(j>d)N['items.'+(j-1)]=I[key]}});I=N;save();render()}
   else if(k==='reset'&&confirm('Сбросить все тексты, числа и картинки?')){localStorage.clear();location.reload()}
   return}
+ const ts=e.target.closest('[data-trseg]');
+ if(ts){const i=+ts.dataset.trseg;if(edit&&i===trSeg){const v=prompt('Название вкладки:',S.tr.seg[i]);if(v!=null){S.tr.seg[i]=v;save()}}else trSeg=i;render();return}
  const sg=e.target.closest('[data-seg]');
  if(sg){const i=+sg.dataset.seg;if(edit&&i===curSeg){const v=prompt('Название вкладки:',S.segments[i].name);if(v!=null){S.segments[i].name=v;save()}}else curSeg=i;render();return}
  if(!edit)return;
