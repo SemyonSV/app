@@ -98,7 +98,7 @@ function numbers(i){
  return '<h1>'+P('tabs.'+i)+'</h1><p class="sub">Обновлено: '+P('updated')+(edit?' · валюта: '+P('currency'):'')+'</p>'+
  '<div class="total"><small>Всего</small><b>'+fmt(total())+' '+esc(S.currency)+'</b></div><div class="card" style="margin-top:calc(var(--u)*24)">'+
  S.items.map((x,k)=>'<div class="row"><span>'+P('items.'+k+'.0')+'</span><b>'+'<span data-p="items.'+k+'.1" data-n="1">'+fmt(x[1])+'</span> '+esc(S.currency)+'<span class="x" data-act="del" data-k="'+k+'">✕</span></b></div>').join('')+'</div>'+
- '<button class="btn" data-act="add">+ Добавить строку</button><button class="btn" data-act="reset">Сбросить всё к начальному виду</button>';
+ '<button class="btn" data-act="add">+ Добавить строку</button><button class="btn" data-act="export">Сохранить копию в файл</button><button class="btn" data-act="import">Загрузить копию из файла</button><button class="btn" data-act="reset">Сбросить всё к начальному виду</button>';
 }
 function home(){
  return topbar()+'<div class="ban">'+S.banners.map((b,k)=>'<div class="b" data-i="banners.'+k+'" '+bgi('banners.'+k,b.color)+'>'+(I['banners.'+k]&&!edit?'':P('banners.'+k+'.title','h3')+P('banners.'+k+'.text','p'))+'<span class="bt" data-act="img" data-path="banners.'+k+'">🖼</span><span class="bt r" data-act="rmimg" data-path="banners.'+k+'">✕</span></div>').join('')+'</div>'+
@@ -131,6 +131,20 @@ function pick(path){
    I[path]=c.toDataURL('image/jpeg',.82);save();render()};im.src=r.result};r.readAsDataURL(f)};
  inp.click();
 }
+async function exportData(){
+ const name='backup-'+new Date().toISOString().slice(0,10)+'.json';
+ const f=new File([JSON.stringify({v:1,s:S,i:I})],name,{type:'application/json'});
+ try{if(navigator.canShare&&navigator.canShare({files:[f]})){await navigator.share({files:[f],title:name});return}}catch(e){if(e&&e.name==='AbortError')return}
+ const a=document.createElement('a');a.href=URL.createObjectURL(f);a.download=name;document.body.append(a);a.click();a.remove();
+}
+function importData(){
+ const inp=document.createElement('input');inp.type='file';inp.accept='.json,application/json';
+ inp.onchange=()=>{const f=inp.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{try{const d=JSON.parse(r.result);if(!d||typeof d.s!=='object'||!Array.isArray(d.s.items))throw 0;
+   if(!confirm('Заменить текущие данные данными из файла?'))return;
+   S=Object.assign({},DEF,d.s);I=d.i||{};save();render()}catch(e){alert('Это не файл резервной копии')}};r.readAsText(f)};
+ inp.click();
+}
 document.addEventListener('click',e=>{
  const t=e.target.closest('[data-tab]');if(t){show(t.dataset.tab==='qr'?'qr':+t.dataset.tab);return}
  const a=e.target.closest('[data-act]');
@@ -138,6 +152,8 @@ document.addEventListener('click',e=>{
   if(k==='edit'){edit=!edit;render()}
   else if(k==='img'){pick(a.dataset.path)}
   else if(k==='rmimg'){delete I[a.dataset.path];save();render()}
+  else if(k==='export'){exportData()}
+  else if(k==='import'){importData()}
   else if(k==='add'){S.items.push(['Новая строка',0]);save();render()}
   else if(k==='del'){S.items.splice(+a.dataset.k,1);save();render()}
   else if(k==='reset'&&confirm('Сбросить все тексты, числа и картинки?')){localStorage.clear();location.reload()}
