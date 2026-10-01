@@ -129,10 +129,15 @@ body.ed .bt{display:flex}
 .nw{position:absolute;top:calc(var(--u)*-14);right:calc(var(--u)*14)}
 .am{color:var(--g);font-size:calc(var(--u)*58*var(--ft))}
 .dots{align-self:center;flex:0 0 calc(var(--u)*100);height:calc(var(--u)*100);border-radius:50%;background:var(--gs);color:var(--g);display:flex;align-items:center;justify-content:center;font-size:calc(var(--u)*34)}
+.tile.wt{background-color:#fff;border:1px solid var(--line)}
+.szb{display:none;position:fixed;right:calc(var(--u)*30);bottom:calc(var(--u)*250 + env(safe-area-inset-bottom,0px));z-index:9;height:calc(var(--u)*100);padding:0 calc(var(--u)*44);border-radius:999px;border:0;background:#fff;color:var(--g);box-shadow:0 2px 12px #0003;font:inherit;font-size:calc(var(--u)*42)}
+body.ed .szb{display:block}
+body.sz .szb{background:#1b6fd1;color:#fff}
+body.sz [data-p]{outline-color:#1b6fd1}
 </style></head><body>
-<main id="main"></main><nav id="nav"></nav>
+<main id="main"></main><button class="szb" id="szb" data-act="sizemode"></button><nav id="nav"></nav>
 <script>
-const DEF={"pm": {"history": "История", "badge": "24", "search": "Что хотите оплатить?", "popTitle": "Популярные", "city": "г. Алматы", "tiles": [{"t": "Мобильная связь", "b": ""}, {"t": "Парковка", "b": ""}, {"t": "Транспорт", "b": ""}, {"t": "Интернет и ТВ", "b": ""}, {"t": "Парковки рядом", "b": ""}, {"t": "Оплата по лицу", "b": "NEW"}, {"t": "Заправка", "b": ""}, {"t": "Штрафы", "b": ""}, {"t": "ЖКУ", "b": ""}, {"t": "Свет", "b": ""}], "allText": "Все платежи", "dueTitle": "К оплате", "due": [{"name": "Имя Фамилия", "sub": "7770000000", "amount": 10490, "badge": "NEW"}, {"name": "Коммунальные услуги", "sub": "г. Алматы, ул. Примерная, д. 1", "amount": 14178.59, "badge": "NEW"}]}, "tr": {"history": "История", "seg": ["По номеру", "На карту РК"], "label": "Номер телефона получателя", "phone": "+7", "saved": "Сохранённые", "change": "Изменить", "badge": "24", "search": "Поиск", "contacts": [{"ini": "ЕК", "name": "ЕРБОЛ К.", "phone": "+7***5-40"}]}, "bonus": 1250, "look": {"accent":"#2ba85c","font":100,"round":100}, "pay": {"m":"октябрь","y":"2026","title":"Погасить платёж","sub":"По займам за октябрь"}, "cardsTitle":"Карты и счета","newCardText":"Открыть новую карту", "currency": "₸", "initials": "ИФ", "updated": "01.10.2026", "tabs": ["Главная", "Мой банк", "Переводы", "Платежи"], "centerTitle": "Центр", "centerText": "Здесь можно разместить любой текст или картинку", "numbersTab": 1, "items": [["Основной счёт", 77724.19, "• 9421"], ["Накопления", 150000, "• 2242"], ["Депозит", 82500, "KZ00 0000 0000 0000"], ["Резерв", 24000, "• 3621"]], "banners": [{"title": "Заголовок баннера", "text": "короткая подпись", "color": "#1f7a52"}, {"title": "Второй баннер", "text": "ещё подпись", "color": "#1b8fd1"}], "services": ["Карты", "Вклады", "Займы", "Инвест", "Магазин", "Поездки", "Защита", "Услуги"], "stripTitle": "Все сервисы", "strip": [{"title": "Еда"}, {"title": "Рост"}, {"title": "Кино"}, {"title": "Здоровье"}, {"title": "Продукты"}], "segments": [{"name": "Еда", "cards": [{"title": "Бургер с двойной котлетой"}, {"title": "Кофе на растительном молоке"}, {"title": "Ужин с самовывозом"}, {"title": "Праздничный плов"}]}, {"name": "Поездки", "cards": [{"title": "Выходные у моря"}, {"title": "Горный маршрут"}]}, {"name": "Магазин", "cards": [{"title": "Новинки недели"}, {"title": "Скидки дня"}]}], "moreButton": "Показать больше", "lists": {"2": [["Между своими счетами", "Картами и счетами"], ["По номеру счёта", "Физ. и юр. лицам"], ["Международные", "В любую точку мира"], ["Запросить перевод", "По номеру телефона"]], "3": [["Мобильная связь", "Пополнить номер"], ["Коммунальные услуги", "Свет, вода, газ"], ["Интернет и ТВ", "Оплата по договору"], ["Штрафы", "Проверить и оплатить"]]}};
+const DEF={"fs": {}, "pm": {"history": "История", "badge": "24", "search": "Что хотите оплатить?", "popTitle": "Популярные", "city": "г. Алматы", "tiles": [{"t": "Мобильная связь", "b": ""}, {"t": "Парковка", "b": ""}, {"t": "Транспорт", "b": ""}, {"t": "Интернет и ТВ", "b": ""}, {"t": "Парковки рядом", "b": ""}, {"t": "Оплата по лицу", "b": "NEW"}, {"t": "Заправка", "b": ""}, {"t": "Штрафы", "b": ""}, {"t": "ЖКУ", "b": ""}, {"t": "Свет", "b": ""}], "allText": "Все платежи", "dueTitle": "К оплате", "due": [{"name": "Имя Фамилия", "sub": "7770000000", "amount": 10490, "badge": "NEW"}, {"name": "Коммунальные услуги", "sub": "г. Алматы, ул. Примерная, д. 1", "amount": 14178.59, "badge": "NEW"}]}, "tr": {"history": "История", "seg": ["По номеру", "На карту РК"], "label": "Номер телефона получателя", "phone": "+7", "saved": "Сохранённые", "change": "Изменить", "badge": "24", "search": "Поиск", "contacts": [{"ini": "ЕК", "name": "ЕРБОЛ К.", "phone": "+7***5-40"}]}, "bonus": 1250, "look": {"accent":"#2ba85c","font":100,"round":100}, "pay": {"m":"октябрь","y":"2026","title":"Погасить платёж","sub":"По займам за октябрь"}, "cardsTitle":"Карты и счета","newCardText":"Открыть новую карту", "currency": "₸", "initials": "ИФ", "updated": "01.10.2026", "tabs": ["Главная", "Мой банк", "Переводы", "Платежи"], "centerTitle": "Центр", "centerText": "Здесь можно разместить любой текст или картинку", "numbersTab": 1, "items": [["Основной счёт", 77724.19, "• 9421"], ["Накопления", 150000, "• 2242"], ["Депозит", 82500, "KZ00 0000 0000 0000"], ["Резерв", 24000, "• 3621"]], "banners": [{"title": "Заголовок баннера", "text": "короткая подпись", "color": "#1f7a52"}, {"title": "Второй баннер", "text": "ещё подпись", "color": "#1b8fd1"}], "services": ["Карты", "Вклады", "Займы", "Инвест", "Магазин", "Поездки", "Защита", "Услуги"], "stripTitle": "Все сервисы", "strip": [{"title": "Еда"}, {"title": "Рост"}, {"title": "Кино"}, {"title": "Здоровье"}, {"title": "Продукты"}], "segments": [{"name": "Еда", "cards": [{"title": "Бургер с двойной котлетой"}, {"title": "Кофе на растительном молоке"}, {"title": "Ужин с самовывозом"}, {"title": "Праздничный плов"}]}, {"name": "Поездки", "cards": [{"title": "Выходные у моря"}, {"title": "Горный маршрут"}]}, {"name": "Магазин", "cards": [{"title": "Новинки недели"}, {"title": "Скидки дня"}]}], "moreButton": "Показать больше", "lists": {"2": [["Между своими счетами", "Картами и счетами"], ["По номеру счёта", "Физ. и юр. лицам"], ["Международные", "В любую точку мира"], ["Запросить перевод", "По номеру телефона"]], "3": [["Мобильная связь", "Пополнить номер"], ["Коммунальные услуги", "Свет, вода, газ"], ["Интернет и ТВ", "Оплата по договору"], ["Штрафы", "Проверить и оплатить"]]}};
 let S,I,edit=false,cur=0,curSeg=0;
 try{S=JSON.parse(localStorage.getItem('s'))}catch(e){}
 S=Object.assign({},DEF,S||{});
@@ -175,7 +180,13 @@ function home(){
  '<div class="cg">'+(S.segments[curSeg]||{cards:[]}).cards.map((c,k)=>{const p='segments.'+curSeg+'.cards.'+k;return '<div class="c"><i data-i="'+p+'" '+bgi(p)+'></i>'+P(p+'.title')+'</div>'}).join('')+'</div>'+
  '<button class="more" data-p="moreButton">'+esc(S.moreButton)+'</button>';
 }
-function listPage(i,nt){return (nt?'':'<h1>'+P('tabs.'+i)+'</h1>')+'<div class="card" style="margin-top:calc(var(--u)*24)">'+((S.lists||{})[i]||[]).map((x,k)=>'<div class="row"><span>'+P('lists.'+i+'.'+k+'.0')+'<small data-p="lists.'+i+'.'+k+'.1">'+esc(x[1])+'</small></span></div>').join('')+'</div>'}
+const LI=["<path d=\"M5 8h14l-4-4M19 16H5l4 4\"/>", "<path d=\"M20 8H6l4-4M4 16h14l-4 4\"/>", "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18\"/>", "<circle cx=\"15\" cy=\"7\" r=\"3\"/><path d=\"M3 16h4l4 2h5a2 2 0 0 0 0-4h-4M7 15v5H3\"/>"];
+function listPage(i,nt){
+ const L=(S.lists||{})[i]||[],pre='lists.'+i;
+ return (nt?'':'<h1>'+P('tabs.'+i)+'</h1>')+'<div class="card" style="margin-top:calc(var(--u)*24)">'+L.map((x,k)=>{const p=pre+'.'+k;
+  return '<div class="arow"><div class="tile wt" data-i="'+p+'" '+bgi(p)+'>'+(I[p]?'':Sv(LI[k%4]))+'</div><div class="atxt"><div class="ahead"><span data-p="'+p+'.0">'+esc(x[0])+'</span><span class="x" data-act="dell" data-li="'+i+'" data-k="'+k+'">✕</span></div><div class="asub" data-p="'+p+'.1">'+esc(x[1]||(edit?'добавить подпись':''))+'</div></div></div>'}).join('')+
+ '<button class="btn" data-act="addl" data-li="'+i+'">+ Добавить строку</button></div>';
+}
 function transferPage(i){
  const T=S.tr;
  const cons=T.contacts.map((c,k)=>'<div class="ct"><div class="cc" data-p="tr.contacts.'+k+'.ini">'+esc(c.ini)+'</div><div class="cn" data-p="tr.contacts.'+k+'.name">'+esc(c.name)+'</div><div class="cp" data-p="tr.contacts.'+k+'.phone">'+esc(c.phone)+'</div><span class="x" data-act="delc" data-k="'+k+'" style="float:none">✕</span></div>').join('');
@@ -203,13 +214,16 @@ function apply(){const L=S.look||DEF.look,r=document.documentElement.style;
  const h=/^#[0-9a-f]{6}$/i.test(L.accent)?L.accent:'#2ba85c',n=parseInt(h.slice(1),16),m=c=>Math.round(c+(255-c)*.86);
  r.setProperty('--g',h);r.setProperty('--gs','rgb('+m(n>>16)+','+m(n>>8&255)+','+m(n&255)+')');r.setProperty('--ft',L.font/100);r.setProperty('--rd',L.round/100)}
 document.addEventListener('input',e=>{const k=e.target.dataset&&e.target.dataset.look;if(!k)return;S.look[k]=k==='accent'?e.target.value:+e.target.value;apply();save()});
+function applySizes(){document.querySelectorAll('[data-p]').forEach(el=>{const v=S.fs&&S.fs[el.dataset.p];if(v){const b=parseFloat(getComputedStyle(el).fontSize);if(b)el.style.fontSize=(b*v/100)+'px'}})}
+function syncSz(){document.body.classList.toggle('sz',sizeMode&&edit);const b=document.getElementById('szb');if(b)b.textContent=sizeMode?'Режим: размер':'Режим: текст'}
 function render(){
+ if(!edit)sizeMode=false;
  apply();
  const st=main.scrollTop;
  main.innerHTML=[0,1,2,3].map(i=>'<section class="page'+(i===0&&i!==S.numbersTab?' home':'')+'" data-t="'+i+'">'+(i===S.numbersTab?numbers(i):i===0?home():i===2?transferPage(i):i===3?paymentsPage(i):listPage(i))+'</section>').join('')+'<section class="page" data-t="qr">'+center()+'</section>';
  nav.innerHTML=[0,1,'qr',2,3].map(k=>k==='qr'?'<button class="qr" data-tab="qr"><span>'+Sv(QRI)+'</span></button>':'<button data-tab="'+k+'">'+Sv(NAV[k]).replace('<svg',k===0?'<svg class="f"':'<svg')+esc(S.tabs[k])+'</button>').join('');
  document.body.classList.toggle('ed',edit);
- show(cur,true);main.scrollTop=st;
+ show(cur,true);main.scrollTop=st;applySizes();syncSz();
 }
 function show(k,keep){
  cur=k;
@@ -239,7 +253,7 @@ function importData(){
    S=Object.assign({},DEF,d.s);I=d.i||{};save();render()}catch(e){alert('Это не файл резервной копии')}};r.readAsText(f)};
  inp.click();
 }
-let taps=[],trSeg=0;
+let taps=[],trSeg=0,sizeMode=false;
 document.addEventListener('click',e=>{
  if(e.target.closest('.chat')){const n=Date.now();taps=taps.filter(t=>n-t<5000);taps.push(n);if(taps.length>=4){taps=[];edit=!edit;render()}return}
  const t=e.target.closest('[data-tab]');if(t){show(t.dataset.tab==='qr'?'qr':+t.dataset.tab);return}
@@ -257,6 +271,9 @@ document.addEventListener('click',e=>{
   else if(k==='delt'){const d=+a.dataset.k;S.pm.tiles.splice(d,1);shiftImgs('pm.tiles',d);save();render()}
   else if(k==='addd'){S.pm.due.push({name:'Название',sub:'',amount:0,badge:''});save();render()}
   else if(k==='deld'){const d=+a.dataset.k;S.pm.due.splice(d,1);shiftImgs('pm.due',d);save();render()}
+  else if(k==='addl'){S.lists[+a.dataset.li].push(['Новая строка','Подпись']);save();render()}
+  else if(k==='dell'){const t=+a.dataset.li,d=+a.dataset.k;S.lists[t].splice(d,1);shiftImgs('lists.'+t,d);save();render()}
+  else if(k==='sizemode'){sizeMode=!sizeMode;syncSz()}
   else if(k==='toggle'){S.hideCards=!S.hideCards;save();render()}
   else if(k==='del'){const d=+a.dataset.k;S.items.splice(d,1);const N={};Object.keys(I).forEach(key=>{const m=key.match(/^items\.(\d+)$/);if(!m)N[key]=I[key];else{const j=+m[1];if(j<d)N[key]=I[key];else if(j>d)N['items.'+(j-1)]=I[key]}});I=N;save();render()}
   else if(k==='reset'&&confirm('Сбросить все тексты, числа и картинки?')){localStorage.clear();location.reload()}
@@ -267,6 +284,9 @@ document.addEventListener('click',e=>{
  if(sg){const i=+sg.dataset.seg;if(edit&&i===curSeg){const v=prompt('Название вкладки:',S.segments[i].name);if(v!=null){S.segments[i].name=v;save()}}else curSeg=i;render();return}
  if(!edit)return;
  const p=e.target.closest('[data-p]');
+ if(p&&sizeMode){const path=p.dataset.p;S.fs=S.fs||{};const v=prompt('Размер текста в процентах (100 — обычный). Оставьте пустым, чтобы вернуть как было:',S.fs[path]||100);if(v==null)return;
+  if(v.trim()===''){delete S.fs[path]}else{const n=parseFloat(v.replace(',','.'));if(isNaN(n)||n<30||n>400){alert('Введите число от 30 до 400');return}S.fs[path]=n}
+  save();render();return}
  if(p){const path=p.dataset.p,v=prompt('Изменить:',get(path)==null?'':get(path));if(v==null)return;
   if(p.dataset.n){const n=parseFloat(v.replace(/\s/g,'').replace(',','.'));if(isNaN(n)){alert('Введите число');return}set(path,n)}else set(path,v);
   save();render();return}
