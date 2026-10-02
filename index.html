@@ -87,9 +87,9 @@ body.ed .bt{display:flex}
 .arow.add .atxt{border:0;align-self:center;padding:0}
 .ahead{display:flex;justify-content:space-between;gap:12px;font-size:calc(var(--u)*58*var(--ft))}
 .ahead b{font-weight:500;white-space:nowrap}
-.asub{color:var(--muted);font-size:calc(var(--u)*50*var(--ft));min-height:calc(var(--u)*20)}
-.aic{display:flex;gap:calc(var(--u)*30);margin-top:calc(var(--u)*14)}
-.aic svg{width:calc(var(--u)*50);height:calc(var(--u)*50);fill:none;stroke:var(--g);stroke-width:1.6}
+.asub{color:var(--muted);font-size:calc(var(--u)*50*var(--ft));min-height:calc(var(--u)*62)}
+.aic{display:flex;gap:calc(var(--u)*26);margin-top:calc(var(--u)*14)}
+.aic svg{width:calc(var(--u)*43);height:calc(var(--u)*43);fill:none;stroke:var(--g);stroke-width:1.6}
 .aic svg+svg{stroke:#a9aeb9}
 .newc{color:var(--g);font-size:calc(var(--u)*58*var(--ft))}
 .lk label{display:flex;justify-content:space-between;align-items:center;padding:calc(var(--u)*24) 0;font-size:calc(var(--u)*44*var(--ft))}
@@ -143,7 +143,8 @@ let ST=null;try{ST=JSON.parse(localStorage.getItem('s'))}catch(e){}
 S=Object.assign({},DEF,ST||{});
 try{I=JSON.parse(localStorage.getItem('i'))||{}}catch(e){I={}}
 function migrate(st){if(st&&st.groups)return;S.groups=JSON.parse(JSON.stringify(DEF.groups));if(st&&Array.isArray(st.items)&&st.items.length){S.groups[0].items=st.items;Object.keys(I).forEach(k=>{const m=k.match(/^items\.(\d+)$/);if(m){I['groups.0.items.'+m[1]]=I[k];delete I[k]}})}}
-migrate(ST);
+function norm(){S.groups.forEach(G=>G.items.forEach(x=>{if(x[2]==null)x[2]='• 0000'}))}
+migrate(ST);norm();
 const save=()=>{try{localStorage.setItem('s',JSON.stringify(S));localStorage.setItem('i',JSON.stringify(I))}catch(e){alert('Не хватает места для картинки. Удалите лишние картинки или выберите поменьше.')}};
 const get=p=>p.split('.').reduce((o,k)=>o==null?o:o[k],S);
 const set=(p,v)=>{const a=p.split('.'),l=a.pop();a.reduce((o,k)=>o[k],S)[l]=v};
@@ -253,7 +254,7 @@ function importData(){
  inp.onchange=()=>{const f=inp.files[0];if(!f)return;const r=new FileReader();
   r.onload=()=>{try{const d=JSON.parse(r.result);if(!d||typeof d.s!=='object'||!Array.isArray(d.s.items))throw 0;
    if(!confirm('Заменить текущие данные данными из файла?'))return;
-   S=Object.assign({},DEF,d.s);I=d.i||{};migrate(d.s);save();render()}catch(e){alert('Это не файл резервной копии')}};r.readAsText(f)};
+   S=Object.assign({},DEF,d.s);I=d.i||{};migrate(d.s);norm();save();render()}catch(e){alert('Это не файл резервной копии')}};r.readAsText(f)};
  inp.click();
 }
 let taps=[],trSeg=0,sizeMode=false;
